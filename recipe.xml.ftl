@@ -31,6 +31,36 @@
 
         <instantiate from="src/app_package/presentation/mvp/view/FeatureView.kt.ftl"
                        to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/view/${viewName}.kt" />
+
+        <#if presentationImplementationType == 'activity'>
+            <instantiate from="src/app_package/presentation/mvp/view/implementation/FeatureActivity.kt.ftl"
+                           to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/view/${activityName}.kt" />
+
+            <instantiate from="res/layout/activity_layout.xml.ftl"
+                           to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml" />
+
+            <merge from="manifest/ActivityManifest.xml.ftl"
+                     to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
+
+        <#else>
+            <instantiate from="src/app_package/presentation/mvp/view/implementation/FeatureFragment.kt.ftl"
+                           to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/view/${fragmentName}.kt" />
+
+            <instantiate from="res/layout/fragment_layout.xml.ftl"
+                           to="${escapeXmlAttribute(resOut)}/layout/${fragmentLayoutName}.xml" />
+
+            <#if presentationImplementationType == 'activityAndFragment'>
+                <instantiate from="src/app_package/presentation/mvp/view/implementation/FeatureActivityWithFragment.kt.ftl"
+                               to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/view/${activityName}.kt" />
+
+                <instantiate from="res/layout/activity_with_fragment_layout.xml.ftl"
+                               to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml" />
+
+                <merge from="manifest/ActivityManifest.xml.ftl"
+                         to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
+            </#if>
+
+        </#if>
     </#if>
 
 </recipe>

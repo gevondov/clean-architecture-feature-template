@@ -107,6 +107,54 @@
             suggest="${underscoreToCamelCase(featureName)}ViewWrapper"
             visibility="presentationLayerType == 'mvp'" />
 
+        <!-- MVP implementation layer -->
+
+        <parameter
+            id="presentationImplementationType"
+            name="Presentation Implementation Type"
+            type="enum"
+            default="none"
+            visibility="presentationLayerType != 'none'" >
+
+            <option id="none">None</option>
+            <option id="activity">Activity</option>
+            <option id="fragment">Fragment</option>
+            <option id="activityAndFragment">Activity And Fragment</option>
+
+        </parameter>
+
+        <parameter
+            id="activityName"
+            name="Activity Name"
+            type="string"
+            constraints="activity|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}Activity"
+            visibility="presentationLayerType != 'none' &amp;&amp; (presentationImplementationType == 'activity' || presentationImplementationType == 'activityAndFragment')" />
+
+        <parameter
+            id="activityLayoutName"
+            name="Activity Layout Name"
+            type="string"
+            constraints="layout|nonempty|unique"
+            suggest="${activityToLayout(activityName)}"
+            visibility="presentationLayerType != 'none' &amp;&amp; (presentationImplementationType == 'activity' || presentationImplementationType == 'activityAndFragment')" />
+
+        <parameter
+            id="fragmentName"
+            name="Fragment Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}Fragment"
+            visibility="presentationLayerType != 'none' &amp;&amp; (presentationImplementationType == 'fragment' || presentationImplementationType == 'activityAndFragment')" />
+
+        <parameter
+            id="fragmentLayoutName"
+            name="Fragment Layout Name"
+            type="string"
+            constraints="layout|nonempty|unique"
+            suggest="fragment_${classToResource(fragmentName)}"
+            visibility="presentationLayerType != 'none' &amp;&amp; (presentationImplementationType == 'fragment' || presentationImplementationType == 'activityAndFragment')" />
+
         <globals file="globals.xml.ftl" />
         <execute file="recipe.xml.ftl" />
 
