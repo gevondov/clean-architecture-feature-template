@@ -28,6 +28,6 @@ The feature will be created with the following structure:
           
 ## Usage
 1. Clone this repository
-2. Copy the folder to the `android-studio-folder/plugins/lib/templates/other/`
+2. Copy `CleanArchitectureFeature` folder to the `android-studio-folder/plugins/lib/templates/other/` folder
 3. Restart Android Studio
 4. Find new template under the `File > New > Other > Clean Architecture Feature` menu
