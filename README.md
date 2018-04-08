@@ -14,7 +14,7 @@ The feature will be created with the following structure:
         - FeatureInteractorImpl.kt
       - presentation
         - presenter
-          - FeaturePresnter.kt
+          - FeaturePresenter.kt
           - FeaturePresenterImpl.kt
           - FeatureViewWrapper.kt
         - view
