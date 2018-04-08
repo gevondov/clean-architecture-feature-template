@@ -60,6 +60,53 @@
             suggest="${underscoreToCamelCase(featureName)}InteractorImpl"
             visibility="needDomainLayer" />
 
+        <!-- Presentation layer -->
+
+        <parameter
+            id="presentationLayerType"
+            name="Presentation Layer"
+            type="enum"
+            default="none" >
+
+            <option id="none">None</option>
+            <option id="mvp">MVP</option>
+
+        </parameter>
+
+        <!-- MVP -->
+
+        <parameter
+            id="presenterName"
+            name="Presenter Interface Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}Presenter"
+            visibility="presentationLayerType == 'mvp'" />
+
+        <parameter
+            id="presenterImplName"
+            name="Presenter Implementation Class Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}PresenterImpl"
+            visibility="presentationLayerType == 'mvp'" />
+
+        <parameter
+            id="viewName"
+            name="View Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}View"
+            visibility="presentationLayerType == 'mvp'" />
+
+        <parameter
+            id="viewWrapperName"
+            name="View Wrapper Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}ViewWrapper"
+            visibility="presentationLayerType == 'mvp'" />
+
         <globals file="globals.xml.ftl" />
         <execute file="recipe.xml.ftl" />
 

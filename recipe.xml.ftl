@@ -18,4 +18,19 @@
         <instantiate from="src/app_package/domain/FeatureInteractorImpl.kt.ftl"
                        to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/domain/${interactorImplName}.kt" />
     </#if>
+
+    <#if presentationLayerType == "mvp">
+        <instantiate from="src/app_package/presentation/mvp/presenter/FeaturePresenter.kt.ftl"
+                       to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/presenter/${presenterName}.kt" />
+
+        <instantiate from="src/app_package/presentation/mvp/presenter/FeaturePresenterImpl.kt.ftl"
+                       to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/presenter/${presenterImplName}.kt" />
+
+        <instantiate from="src/app_package/presentation/mvp/presenter/FeatureViewWrapper.kt.ftl"
+                       to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/presenter/${viewWrapperName}.kt" />
+
+        <instantiate from="src/app_package/presentation/mvp/view/FeatureView.kt.ftl"
+                       to="${escapeXmlAttribute(srcOut)}/features/${escapeXmlAttribute(featureFolderName)}/presentation/view/${viewName}.kt" />
+    </#if>
+
 </recipe>
