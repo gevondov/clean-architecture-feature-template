@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<template
+    format="4"
+    revision="1"
+    name="Clean Architecture Feature"
+    description="Creates a clean architecture feature">
+
+        <parameter
+            id="featureName"
+            name="Feature Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            default="Sample" />
+
+        <!-- Data layer -->
+
+        <parameter
+            id="needDataLayer"
+            name="Need Data Layer"
+            type="boolean"
+            default="true" />
+
+        <parameter
+            id="repositoryName"
+            name="Repository Interface Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}Repository"
+            visibility="needDataLayer" />
+
+        <parameter
+            id="repositoryImplName"
+            name="Repository Implementation Class Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}RepositoryImpl"
+            visibility="needDataLayer" />
+
+        <globals file="globals.xml.ftl" />
+        <execute file="recipe.xml.ftl" />
+
+</template>
