@@ -36,6 +36,30 @@
             suggest="${underscoreToCamelCase(featureName)}RepositoryImpl"
             visibility="needDataLayer" />
 
+        <!-- Domain layer -->
+
+        <parameter
+            id="needDomainLayer"
+            name="Need Domain Layer"
+            type="boolean"
+            default="true" />
+
+        <parameter
+            id="interactorName"
+            name="Interactor Interface Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}Interactor"
+            visibility="needDomainLayer" />
+
+        <parameter
+            id="interactorImplName"
+            name="Interactor Implementation Class Name"
+            type="string"
+            constraints="class|nonempty|unique"
+            suggest="${underscoreToCamelCase(featureName)}InteractorImpl"
+            visibility="needDomainLayer" />
+
         <globals file="globals.xml.ftl" />
         <execute file="recipe.xml.ftl" />
 
